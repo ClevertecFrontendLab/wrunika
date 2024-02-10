@@ -1,0 +1,18 @@
+.footer_wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: end;
+    padding: 9.75rem 1.5rem 2.625rem;
+}
+
+button.review_btn {
+    margin-bottom: 3px;
+}
+
+.footer_btn_text {
+    font-size: 1rem;
+    line-height: 1.313rem;
+    color: var(--primary-text-color);
+    letter-spacing: 0.8px;
+}
