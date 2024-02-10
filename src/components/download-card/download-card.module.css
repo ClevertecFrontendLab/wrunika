@@ -1,0 +1,39 @@
+.download_card {
+    width: 15rem;
+    height: 7.9rem;
+    background-color: var(--light-background-color);
+    border-radius: 2px;
+}
+
+.download_body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.73rem 1.5rem;
+    letter-spacing: 0.7px;
+}
+
+.download_title {
+    font-size: 1rem;
+    line-height: 1.313rem;
+    color: var(--primary-text-color);
+}
+
+.available_title {
+    line-height: 1.125rem;
+    color: var(--extra-text-color);
+}
+
+.download_btns_wrapper {
+    padding: 0.75rem 0;
+}
+
+button.download_btn {
+    padding: 4px 14px;
+}
+
+.download_btn_text {
+    line-height: 1.125rem;
+    color: var(--text-color);
+}
