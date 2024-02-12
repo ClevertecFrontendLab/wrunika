@@ -1,5 +1,6 @@
 .action {
     width: 15rem;
+    height: 6.312rem;
     text-align: center;
     background-color: var(--light-background-color);
     border-radius: 2px;
@@ -8,7 +9,6 @@
 .action_title {
     padding: 0.75rem 1.5rem;
     line-height: 1.313rem;
-    letter-spacing: 0.5px;
 }
 
 .action_btn_wrapper {

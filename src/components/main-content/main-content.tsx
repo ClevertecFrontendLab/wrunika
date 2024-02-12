@@ -26,32 +26,28 @@ const cardInfo: CardInfoType[] = [
 
 export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
     const screenWidth = useResize();
-    const brFor834 = screenWidth === 834 && !navbarCollapsed && <br />;
+    /*const brFor834 = screenWidth === 834 && !navbarCollapsed && <br />;
     const brFor834And1440 =
-        screenWidth === 834 && navbarCollapsed ? <br /> : screenWidth === 1440 ? <br /> : null;
+        screenWidth === 834 && navbarCollapsed ? <br /> : screenWidth === 1440 ? <br /> : null;*/
     return (
         <Layout.Content style={{ backgroundColor: 'transparent' }}>
             <div className={s.content_info_wrapper}>
                 <div className={s.content_description}>
                     <Typography.Paragraph>С CleverFit ты сможешь:</Typography.Paragraph>
                     <Typography.Paragraph>
-                        — планировать свои тренировки на календаре, выбирая тип
-                        {brFor834} и уровень нагрузки;
+                        — планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;
                     </Typography.Paragraph>
                     <Typography.Paragraph>
-                        — отслеживать свои достижения в разделе статистики, {brFor834}сравнивая свои
-                        результаты
-                        {brFor834And1440} с нормами и рекордами;
+                        — отслеживать свои достижения в разделе статистики, сравнивая свои
+                        результаты с нормами и рекордами;
                     </Typography.Paragraph>
                     <Typography.Paragraph>
-                        — создавать свой профиль, где ты можешь загружать свои фото, {brFor834}видео
-                        и отзывы
-                        {brFor834And1440} о тренировках;
+                        — создавать свой профиль, где ты можешь загружать свои фото, видео и отзывы
+                        о тренировках;
                     </Typography.Paragraph>
                     <Typography.Paragraph>
-                        — выполнять расписанные тренировки для разных частей тела, {brFor834}следуя
-                        подробным {brFor834And1440}
-                        инструкциям и советам профессиональных{brFor834} тренеров.
+                        — выполнять расписанные тренировки для разных частей тела, следуя подробным
+                        инструкциям и советам профессиональных тренеров.
                     </Typography.Paragraph>
                 </div>
                 <Space
@@ -63,9 +59,8 @@ export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
                         level={4}
                         className={`${s.content_description} ${s.actions_description}`}
                     >
-                        CleverFit — это не просто приложение, а твой личный помощник
-                        {brFor834And1440} в мире фитнеса. Не откладывай на завтра — начни
-                        тренироваться{screenWidth === 1440 && <br />} уже сегодня!
+                        CleverFit — это не просто приложение, а твой личный помощник в мире фитнеса.
+                        Не откладывай на завтра — начни тренироваться уже сегодня!
                     </Typography.Title>
                     <Space
                         style={screenWidth <= 576 ? { justifyContent: 'center' } : undefined}

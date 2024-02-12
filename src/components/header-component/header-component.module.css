@@ -8,7 +8,6 @@ header.header_background {
 }
 
 nav.breadcrumb {
-    letter-spacing: 1px;
     color: var(--text-color);
 }
 
@@ -23,15 +22,10 @@ div h1.title {
     font-size: 2.375rem;
     font-weight: 700;
     line-height: 3.125rem;
-    letter-spacing: 0.8px;
 }
 
 button.settings_btn {
     margin-top: -0.25rem;
-}
-
-.settings_title {
-    letter-spacing: 0.6px;
 }
 
 @media (max-width: 834px) {
@@ -39,7 +33,6 @@ button.settings_btn {
         font-size: 1.5rem;
         font-weight: 500;
         line-height: 1.95rem;
-        letter-spacing: 0.4px;
     }
 }
 

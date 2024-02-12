@@ -25,7 +25,7 @@ export const HeaderComponent = ({ navbarCollapsed }: WithCollapsedPropsType) => 
                     <Button className={s.settings_btn} shape='circle' icon={<SettingOutlined />} />
                 ) : (
                     <Button className={s.settings_btn} type='text' icon={settingIcon}>
-                        <Typography.Text className={s.settings_title}>Настройки</Typography.Text>
+                        <Typography.Text>Настройки</Typography.Text>
                     </Button>
                 )}
             </div>
