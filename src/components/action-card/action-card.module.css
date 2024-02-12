@@ -34,3 +34,12 @@
         text-align: left;
     }
 }
+
+@media (max-width: 576px) {
+    .action {
+        width: 20.5rem;
+    }
+    .action_title {
+        text-align: center;
+    }
+}

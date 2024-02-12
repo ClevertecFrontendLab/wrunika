@@ -36,7 +36,7 @@ export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
                     <Typography.Paragraph>С CleverFit ты сможешь:</Typography.Paragraph>
                     <Typography.Paragraph>
                         — планировать свои тренировки на календаре, выбирая тип
-                        {brFor834}и уровень нагрузки;
+                        {brFor834} и уровень нагрузки;
                     </Typography.Paragraph>
                     <Typography.Paragraph>
                         — отслеживать свои достижения в разделе статистики, {brFor834}сравнивая свои
@@ -54,7 +54,11 @@ export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
                         инструкциям и советам профессиональных{brFor834} тренеров.
                     </Typography.Paragraph>
                 </div>
-                <Space direction='vertical' size={16}>
+                <Space
+                    style={screenWidth <= 576 ? { alignItems: 'center' } : undefined}
+                    direction='vertical'
+                    size={16}
+                >
                     <Typography.Title
                         level={4}
                         className={`${s.content_description} ${s.actions_description}`}
@@ -63,7 +67,11 @@ export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
                         {brFor834And1440} в мире фитнеса. Не откладывай на завтра — начни
                         тренироваться{screenWidth === 1440 && <br />} уже сегодня!
                     </Typography.Title>
-                    <Space size={16} wrap>
+                    <Space
+                        style={screenWidth <= 576 ? { justifyContent: 'center' } : undefined}
+                        size={screenWidth <= 576 ? 8 : 16}
+                        wrap
+                    >
                         {cardInfo.map((c) => {
                             return (
                                 <ActionCard

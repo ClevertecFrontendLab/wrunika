@@ -1,6 +1,7 @@
 .sidebar {
     position: relative;
     letter-spacing: 0.6px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
 }
 
 .logo {
@@ -17,6 +18,17 @@
     border-left: 1.25rem solid var(--light-background-color);
     border-top: 0.625rem solid transparent;
     border-bottom: 0.625rem solid transparent;
+}
+
+[data-test-id='sider-switch-mobile'] {
+    height: 3rem;
+    width: 2rem;
+    padding: 0.3rem 0 1.5rem;
+    position: fixed;
+    top: 1.5rem;
+    border-left: 1.8rem solid var(--light-background-color);
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
 }
 
 .trigger{
@@ -48,5 +60,19 @@ button.exit_btn {
 @media (max-width: 834px) {
     [data-test-id='sider-switch'] {
         top: 47%;
+    }
+}
+
+@media (max-width: 576px) {
+    aside.sidebar {
+        position: absolute;
+        height: 100vh;
+        letter-spacing: 0.2px;
+    }
+    .trigger{
+        margin-left: -1.3rem;
+    }
+    .exit_text {
+        padding-left: 0.9rem;
     }
 }

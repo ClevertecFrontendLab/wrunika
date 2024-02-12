@@ -38,3 +38,18 @@ div.content_description div {
 .action_icon svg path {
     fill: var(--primary-text-color);
 }
+
+@media (max-width: 576px) {
+    .content_info_wrapper {
+        padding-inline: 1rem;
+        align-items: center;
+    }
+    .content_description {
+        max-width: 20.5rem;
+        min-height: 23rem;
+        padding: 1rem;
+    }
+    div.content_description div {
+        letter-spacing: 0.8px;
+    }
+}

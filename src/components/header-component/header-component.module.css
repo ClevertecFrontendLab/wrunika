@@ -9,6 +9,7 @@ header.header_background {
 
 nav.breadcrumb {
     letter-spacing: 1px;
+    color: var(--text-color);
 }
 
 .header_content {
@@ -39,5 +40,15 @@ button.settings_btn {
         font-weight: 500;
         line-height: 1.95rem;
         letter-spacing: 0.4px;
+    }
+}
+
+@media (max-width: 576px) {
+    header.header_background {
+        gap: 0;
+    }
+    div h1.title {
+        font-size: 1.25rem;
+        line-height: 1.625rem;
     }
 }
