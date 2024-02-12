@@ -1,16 +1,11 @@
 import { Button, Divider, Space, Typography } from 'antd';
-import { ReactNode } from 'react';
+import { ActionCardPropsType } from './../../types';
+
 import s from './action-card.module.css';
 
-type PropsType = {
-    title: string;
-    btnBody: string;
-    icon: ReactNode;
-};
-
-export const ActionCard = ({ title, btnBody, icon }: PropsType) => {
+export const ActionCard = ({ title, btnBody, icon, changedSize }: ActionCardPropsType) => {
     return (
-        <Space direction='vertical' size={0} className={s.action}>
+        <Space direction='vertical' size={0} className={`${s.action} ${s[changedSize]}`}>
             <Typography.Paragraph style={{ margin: 0 }} className={s.action_title}>
                 {title}
             </Typography.Paragraph>

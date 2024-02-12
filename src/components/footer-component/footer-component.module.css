@@ -16,3 +16,17 @@ button.review_btn {
     color: var(--primary-text-color);
     letter-spacing: 0.8px;
 }
+
+.changed_padding {
+    padding-top: 22.625rem;
+}
+
+@media (max-width: 834px) {
+    .footer_wrapper {
+        padding-top: 14.812rem;
+    }
+    .changed_padding {
+        padding-top: 22.625rem;
+    }
+}
+

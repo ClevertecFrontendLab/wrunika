@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { Button, Divider, Layout, Menu, Typography } from 'antd';
 import {
     CalendarTwoTone,
@@ -8,26 +9,23 @@ import {
     TrophyTwoTone,
 } from '@ant-design/icons';
 import { exit, logoFit, logoFull } from './../../assets';
-import React, { ReactNode, useState } from 'react';
+import { NavbarMenuItemsType, NavbarPropsType } from './../../types';
 
 import s from './navbar.module.css';
 
-type ItemsType = {
-    key: string;
-    icon: ReactNode;
-    label: string;
-    style?: { marginBottom: number; paddingLeft: number };
-};
-
-export const Navbar = () => {
+export const Navbar = ({ setNavbarCollapsed }: NavbarPropsType) => {
     const [collapsed, setCollapsed] = useState(false);
+    useEffect(() => {
+        setNavbarCollapsed(collapsed);
+    }, [collapsed, setNavbarCollapsed]);
+    const switcherLeft = collapsed ? 64 : 208;
     const logo = collapsed ? logoFit : logoFull;
     const logoPadding = collapsed ? { paddingTop: 49, paddingBottom: 69 } : undefined;
     const iconStyle = collapsed
         ? { marginBottom: 17, paddingLeft: 21 }
         : { marginBottom: 17, paddingLeft: 16 };
 
-    const items: ItemsType[] = [
+    const items: NavbarMenuItemsType[] = [
         {
             key: '1',
             icon: <CalendarTwoTone className={s.icon} />,
@@ -83,7 +81,7 @@ export const Navbar = () => {
                     </Button>
                 </div>
             </Layout.Sider>
-            <div data-test-id='sider-switch'>
+            <div data-test-id='sider-switch' style={{ left: switcherLeft }}>
                 {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                     className: s.trigger,
                     onClick: () => setCollapsed(!collapsed),

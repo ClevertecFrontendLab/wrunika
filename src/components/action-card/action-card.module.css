@@ -20,3 +20,17 @@
     line-height: 1.125rem;
     color: var(--primary-text-color);
 }
+
+@media (max-width: 834px) {
+    .changed_size182 {
+        width: 11.375rem;
+        height: 7.625rem;
+    }
+    .changed_size230 {
+        width: 14.375rem;
+        height: 6.312rem;
+    }
+    .action_title {
+        text-align: left;
+    }
+}

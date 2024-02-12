@@ -3,8 +3,6 @@ section.main_layout {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 0;
-}
-
-.site_layout {
-    margin-left: -1.25rem;
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
 }

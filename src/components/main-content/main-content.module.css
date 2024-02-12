@@ -13,6 +13,7 @@
     background-color: var(--light-background-color);
     border-radius: 2px;
 }
+
 div.content_description div {
     margin: 0;
     letter-spacing: 0.6px;

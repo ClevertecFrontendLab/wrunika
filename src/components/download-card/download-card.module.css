@@ -10,17 +10,17 @@
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
-    padding: 0.73rem 1.5rem;
+    padding: 0.65rem 1.5rem;
     letter-spacing: 0.7px;
 }
 
-.download_title {
+span.download_title {
     font-size: 1rem;
     line-height: 1.313rem;
     color: var(--primary-text-color);
 }
 
-.available_title {
+span.available_title {
     line-height: 1.125rem;
     color: var(--extra-text-color);
 }
@@ -30,10 +30,10 @@
 }
 
 button.download_btn {
-    padding: 4px 14px;
+    padding: 0.25rem 1rem 0.25rem 0.75rem;
 }
 
-.download_btn_text {
+span.download_btn_text {
     line-height: 1.125rem;
     color: var(--text-color);
 }

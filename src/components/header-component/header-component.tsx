@@ -1,8 +1,15 @@
 import { Breadcrumb, Button, Layout, Typography } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
+import { useResize } from '@hooks/useResize.ts';
+import { WithCollapsedPropsType } from './../../types';
+
 import s from './header-component.module.css';
 
-export const HeaderComponent = () => {
+export const HeaderComponent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
+    const screenWidth = useResize();
+    const brFor834 = screenWidth === 834 && !navbarCollapsed && <br />;
+    const settingIcon = screenWidth <= 834 ? null : <SettingOutlined />;
+
     return (
         <Layout.Header className={s.header_background}>
             <Breadcrumb className={s.breadcrumb}>
@@ -10,10 +17,10 @@ export const HeaderComponent = () => {
             </Breadcrumb>
             <div className={s.header_content}>
                 <Typography.Title level={1} className={s.title}>
-                    Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
-                    мечты!
+                    Приветствуем тебя в CleverFit — приложении, <br />
+                    которое поможет тебе добиться своей {brFor834}мечты!
                 </Typography.Title>
-                <Button className={s.settings_btn} type='text' icon={<SettingOutlined />}>
+                <Button className={s.settings_btn} type='text' icon={settingIcon}>
                     <Typography.Text className={s.settings_title}>Настройки</Typography.Text>
                 </Button>
             </div>
