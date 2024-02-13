@@ -34,7 +34,7 @@ export const Navbar = ({ setNavbarCollapsed }: NavbarPropsType) => {
             ? { paddingTop: 8, paddingBottom: 22, paddingLeft: 0 }
             : undefined;
     const iconStyle = isWidth576
-        ? { marginBottom: 10, paddingLeft: 8 }
+        ? { marginBottom: 10, paddingLeft: 8, paddingRight: 4 }
         : collapsed && !isWidth576
         ? { marginBottom: 17, paddingLeft: 21 }
         : { marginBottom: 17, paddingLeft: 16 };
