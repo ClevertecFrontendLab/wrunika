@@ -1,0 +1,50 @@
+.content_info_wrapper {
+    background-color: transparent;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.content_description {
+    max-width: 47rem;
+    min-height: 13.5rem;
+    padding: 1.5rem;
+    background-color: var(--light-background-color);
+    border-radius: 2px;
+}
+
+div.content_description div {
+    margin: 0;
+    line-height: 1.313rem;
+    color: var(--second-primary-text-color);
+}
+
+.content_description.actions_description {
+    margin: 0;
+    min-height: 7.875rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+}
+
+.action_icon svg,
+.action_icon_profile svg {
+    font-size: 0.875rem;
+}
+
+.action_icon svg path {
+    fill: var(--primary-text-color);
+}
+
+@media (max-width: 576px) {
+    .content_info_wrapper {
+        padding-inline: 1rem;
+        align-items: center;
+    }
+    .content_description {
+        max-width: 20.5rem;
+        min-height: 23rem;
+        padding: 1rem;
+    }
+}
