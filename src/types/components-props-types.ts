@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ResultStatusType } from 'antd/es/result';
 
 export type ActionCardPropsType = {
     title: string;
@@ -13,4 +14,17 @@ export type WithCollapsedPropsType = {
 
 export type NavbarPropsType = {
     setNavbarCollapsed: (collapsed: boolean) => void;
+};
+
+export type EnterBgPropsType = {
+    children: ReactNode;
+};
+
+export type ResultCardPropsType = {
+    status: ResultStatusType;
+    title: string;
+    subTitle: string;
+    btnTitle: string;
+    dataAttribute?: string;
+    className: 'error_style' | 'unsuccessful_style' | 'successful_style';
 };
