@@ -26,5 +26,10 @@ export type ResultCardPropsType = {
     subTitle: string;
     btnTitle: string;
     dataAttribute?: string;
-    className: 'error_style' | 'unsuccessful_style' | 'successful_style';
+    className:
+        | 'error_style'
+        | 'unsuccessful_style'
+        | 'successful_style'
+        | 'error_registration'
+        | 'error_email_no_exist';
 };

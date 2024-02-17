@@ -28,7 +28,7 @@ div.wrapper {
     background-color: var(--primary-text-color);
 }
 
-div.error_style {
+div.error_style, div.error_registration {
     margin: 13.562rem auto 13.5rem;
 }
 
@@ -40,12 +40,23 @@ div.successful_style {
     margin: 13.5rem auto 13.562rem;
 }
 
+div.error_email_no_exist {
+    margin: 13.812rem auto 13.75rem;
+    padding: 4rem 2rem 3.5rem;
+}
+div.error_email_no_exist button {
+    width: auto;
+}
+div.error_email_no_exist > div:nth-child(3) {
+    margin: 0 4rem;
+}
+
 @media (max-width: 834px) {
     div.successful_style {
         margin: 18.875rem auto 18.812rem;
     }
 
-    div.error_style {
+    div.error_style, div.error_registration, div.error_email_no_exist {
         margin: 18.875rem auto 18.812rem;
     }
 
@@ -70,5 +81,20 @@ div.successful_style {
 
     div.unsuccessful_style {
         margin: 9.062rem auto 9.125rem;
+    }
+
+    div.error_registration {
+        margin: 8.5rem auto 8.562rem;
+    }
+
+    div.error_email_no_exist {
+        margin: 5.812rem auto;
+        padding: 4rem 2rem 3.5rem;
+    }
+    div.error_email_no_exist > div:nth-child(3) {
+        margin: 0;
+    }
+    div.error_email_no_exist button {
+        width: 64%;
     }
 }
