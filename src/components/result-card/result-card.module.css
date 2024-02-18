@@ -64,6 +64,14 @@ div.error_change_password {
     padding-bottom: 3.5rem;
 }
 
+div.error_check_email {
+    margin: 7.687rem auto 7.67rem;
+    padding: 3.65rem 2rem 3.5rem;
+}
+div.error_check_email button {
+    width: auto;
+}
+
 @media (max-width: 834px) {
     div.successful_style {
         margin: 18.875rem auto 18.812rem;
@@ -120,5 +128,10 @@ div.error_change_password {
     }
     div.success_change_password > div:nth-child(3) {
         margin: 0;
+    }
+
+    div.error_check_email {
+        margin: 2px auto;
+        padding: 3.7rem 2rem 3.5rem;
     }
 }
