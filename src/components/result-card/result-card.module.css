@@ -51,6 +51,11 @@ div.error_email_no_exist > div:nth-child(3) {
     margin: 0 4rem;
 }
 
+div.error_change_password {
+    margin: 14.375rem auto 14.312rem;
+    padding-bottom: 3.5rem;
+}
+
 @media (max-width: 834px) {
     div.successful_style {
         margin: 18.875rem auto 18.812rem;
@@ -96,5 +101,9 @@ div.error_email_no_exist > div:nth-child(3) {
     }
     div.error_email_no_exist button {
         width: 64%;
+    }
+
+    div.error_change_password {
+        margin: 9.093rem auto;
     }
 }

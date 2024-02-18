@@ -31,5 +31,6 @@ export type ResultCardPropsType = {
         | 'unsuccessful_style'
         | 'successful_style'
         | 'error_registration'
-        | 'error_email_no_exist';
+        | 'error_email_no_exist'
+        | 'error_change_password';
 };
