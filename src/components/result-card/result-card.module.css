@@ -51,6 +51,14 @@ div.error_email_no_exist > div:nth-child(3) {
     margin: 0 4rem;
 }
 
+div.success_change_password {
+    margin: 13.812rem auto 13.75rem;
+    padding-bottom: 3.5rem;
+}
+div.success_change_password > div:nth-child(3) {
+    margin: 0 2rem;
+}
+
 div.error_change_password {
     margin: 14.375rem auto 14.312rem;
     padding-bottom: 3.5rem;
@@ -105,5 +113,12 @@ div.error_change_password {
 
     div.error_change_password {
         margin: 9.093rem auto;
+    }
+
+    div.success_change_password {
+        margin: 7.562rem auto;
+    }
+    div.success_change_password > div:nth-child(3) {
+        margin: 0;
     }
 }
