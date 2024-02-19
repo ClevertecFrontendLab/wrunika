@@ -34,5 +34,13 @@ export type ResultCardPropsType = {
         | 'error_email_no_exist'
         | 'error_change_password'
         | 'success_change_password'
-        | 'error_check_email';
+        | 'error_check_email'
+        | 'confirm_email'
+        | 'error_confirm_email';
+};
+
+export type PasswordInputsPropsType = {
+    placeholder: string;
+    passwordDataAttribute: string;
+    confirmDataAttribute: string;
 };
