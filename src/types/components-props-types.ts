@@ -44,3 +44,16 @@ export type PasswordInputsPropsType = {
     passwordDataAttribute: string;
     confirmDataAttribute: string;
 };
+
+export type EnterButtonsPropsType = {
+    dataAttribute?: string;
+    enterButtonBody: string;
+    googleButtonBody: string;
+    className: 'login_buttons' | 'registration_buttons';
+    disabled: boolean;
+};
+
+export type EmailInputPropsType = {
+    className?: string;
+    dataAttribute: string;
+};
