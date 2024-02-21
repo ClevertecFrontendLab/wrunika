@@ -72,6 +72,18 @@ div.error_check_email button {
     width: auto;
 }
 
+div.confirm_email, div.error_confirm_email {
+    margin: 11.5rem auto;
+    padding-bottom: 6.125rem;
+}
+div.confirm_email svg path {
+    fill: var(--primary-text-color);
+}
+
+div.error_confirm_email {
+    padding-inline: 3rem;
+}
+
 @media (max-width: 834px) {
     div.successful_style {
         margin: 18.875rem auto 18.812rem;
@@ -133,5 +145,14 @@ div.error_check_email button {
     div.error_check_email {
         margin: 2px auto;
         padding: 3.7rem 2rem 3.5rem;
+    }
+
+    div.confirm_email, div.error_confirm_email {
+        margin: 3.625rem auto 3.562rem;
+        padding-bottom: 5.75rem;
+    }
+    div.confirm_email > div:nth-child(3),
+    div.error_confirm_email > div:nth-child(3) {
+        padding-inline: 1.3rem;
     }
 }
