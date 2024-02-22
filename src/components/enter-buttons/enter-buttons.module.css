@@ -16,3 +16,21 @@ div.registration_buttons {
     margin-bottom: 0.875rem;
     background-color: var(--primary-text-color);
 }
+
+@media (max-width: 576px) {
+    div.login_buttons {
+        margin-bottom: 7.75rem;
+    }
+
+    div.login_buttons [data-test-id='login-submit-button'] {
+        margin-bottom: 1rem;
+    }
+
+    div.registration_buttons {
+        margin-bottom: 1.937rem;
+    }
+
+    .buttons button {
+        font-size: 0.875rem;
+    }
+}

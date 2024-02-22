@@ -6,9 +6,9 @@ export const EmailInput = ({ className, dataAttribute }: EmailInputPropsType) =>
         <Form.Item
             className={className}
             name='email'
-            rules={[{ required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '' }]}
+            rules={[{ required: true, pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, message: '' }]}
         >
-            <Input data-test-id={dataAttribute} addonBefore={'e-mail:'} />
+            <Input type='email' data-test-id={dataAttribute} addonBefore={'e-mail:'} />
         </Form.Item>
     );
 };

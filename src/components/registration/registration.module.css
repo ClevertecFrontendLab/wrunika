@@ -1,0 +1,32 @@
+.registration_form {
+    margin-top: 0.25rem;
+}
+
+.registration_email input {
+    height: 2.5rem;
+}
+
+div.registration_email {
+    margin-bottom: 2rem;
+}
+
+.registration_form button[data-test-id='registration-submit-button'] {
+    margin-bottom: 1.187rem;
+}
+
+#email_id.email_error span > span > span {
+    color: var(--text-color);
+}
+#email_id.email_error input {
+    border-left-color: #d9d9d9;
+}
+
+@media (max-width: 576px) {
+    div.registration_email {
+        margin-bottom: 2.1rem;
+    }
+    .registration_form button[data-test-id='registration-submit-button'] {
+        margin-bottom: 0.9rem;
+    }
+}
+

@@ -1,0 +1,53 @@
+.login_form input {
+    height: 40px;
+}
+
+.login_form span {
+    padding-block: 0;
+}
+
+.inputs_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 24px;
+}
+
+.password > div > div > div:nth-child(2) > div {
+   font-size: 12px;
+}
+
+div.remember_forgot {
+    margin-bottom: 1.2rem;
+}
+
+.login_form label {
+    padding-top: 0.25rem;
+}
+
+#email_id.email_error input {
+    border-left-color: #d9d9d9;
+}
+
+#email_id.email_error span > span > span {
+    color: var(--text-color);
+}
+
+button[data-test-id='login-forgot-button'] {
+    float: right;
+    padding: 0;
+    font-size: 16px;
+    line-height: 21px;
+    color: var(--primary-text-color);
+}
+
+@media (max-width: 576px) {
+    div.remember_forgot {
+        margin-bottom: 1.15rem;
+    }
+
+    button[data-test-id='login-forgot-button'] {
+        font-size: 14px;
+        padding-right: 5px;
+    }
+}
