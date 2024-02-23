@@ -57,3 +57,11 @@ export type EmailInputPropsType = {
     className?: string;
     dataAttribute: string;
 };
+
+export type EnterComponentPropsType = {
+    child1?: ReactNode;
+    child2?: ReactNode;
+    defaultActiveKey?: 'item-1' | 'item-2';
+    marginTop?: number;
+    marginBottom?: number;
+};
