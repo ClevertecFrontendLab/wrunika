@@ -26,7 +26,7 @@ export const ConfirmEmail = () => {
                     <VerificationInput
                         onComplete={onVerificationComplete}
                         placeholder=''
-                        data-test-id='verification-input'
+                        inputProps={{ 'data-test-id': 'verification-input' }}
                         classNames={{
                             container: 'container',
                             character: characterClass,
