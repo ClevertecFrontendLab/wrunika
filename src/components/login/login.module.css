@@ -32,6 +32,9 @@ div.remember_forgot {
 #email_id.email_error span > span > span {
     color: var(--text-color);
 }
+.no_error {
+    border-color: #d9d9d9;
+}
 
 button[data-test-id='login-forgot-button'] {
     float: right;
