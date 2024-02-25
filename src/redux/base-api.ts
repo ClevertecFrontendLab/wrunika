@@ -4,10 +4,10 @@ export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://marathon-api.clevertec.ru',
-        credentials: 'include',
-        prepareHeaders: (headers) => {
+        //credentials: 'include',
+        /*prepareHeaders: (headers) => {
             headers.append('x-auth-skip', 'true');
-        },
+        },*/
     }),
     endpoints: () => ({}),
 });
