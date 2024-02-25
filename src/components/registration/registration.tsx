@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Form } from 'antd';
 import { useButtonDisable } from '@hooks/useButtonDisable.ts';
 import { PasswordInputs } from '@components/password-inputs';
 import { EnterButtons } from '@components/enter-buttons';
 import { EmailInput } from '@components/email-input';
+import { Loader } from '@components/loader';
 import { RegistrationValuesType } from './../../types';
+import { useRegistrationMutation } from '@redux/index.ts';
+import { PATHS } from '@constants/paths.ts';
+import { useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
+import { setRegistrationData } from '@redux/auth.slice.ts';
 
 import s from './registration.module.css';
 
 export const Registration = () => {
+    const [sendRegistrationData, { isLoading }] = useRegistrationMutation();
+    const dispatch = useAppDispatch();
+    const registrationData = useAppSelector((state) => state.auth.registrationData);
+    const navigate = useNavigate();
     const { form, disabled, handleFormChange } = useButtonDisable();
     const [isEmailHasError, setIsEmailHasError] = useState(false);
-    const error_style = isEmailHasError ? 'email_error' : '';
+    const error_style = isEmailHasError ? 'email_error' : 'no_error';
+
+    const prevPath = useAppSelector((state) => state.router.previousLocations);
+
     const onHandleFormChange = () => {
         handleFormChange();
         const hasEmailError = form.getFieldsError(['email']).some(({ errors }) => errors.length);
@@ -19,13 +32,43 @@ export const Registration = () => {
     };
 
     const onFinish = (values: RegistrationValuesType) => {
-        console.log('Received values of form: ', {
-            email: values.email,
-            password: values.password,
-        });
+        sendRegistrationData({ email: values.email, password: values.password })
+            .unwrap()
+            .then(() => {
+                registrationData.email &&
+                    dispatch(setRegistrationData({ email: '', password: '' }));
+                navigate(PATHS.REGISTRATION_SUCCESS);
+            })
+            .catch((e) => {
+                if (e.data.statusCode === 409) {
+                    navigate(PATHS.ERROR_USER_EXIST);
+                } else {
+                    dispatch(
+                        setRegistrationData({ email: values.email, password: values.password }),
+                    );
+                    navigate(PATHS.ERROR);
+                }
+            });
     };
+
+    useEffect(() => {
+        if (
+            registrationData.email &&
+            registrationData.password &&
+            prevPath &&
+            prevPath[prevPath.length - 1].location?.pathname === PATHS.ERROR
+        ) {
+            onFinish(registrationData);
+        }
+    }, [registrationData, prevPath]);
+
+    if (localStorage.getItem('accessToken')) {
+        return <Navigate to={PATHS.MAIN} />;
+    }
+
     return (
         <>
+            {isLoading && <Loader />}
             <Form
                 name='register'
                 className={s.registration_form}

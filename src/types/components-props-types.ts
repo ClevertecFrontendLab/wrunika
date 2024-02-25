@@ -25,6 +25,7 @@ export type ResultCardPropsType = {
     title: string;
     subTitle: string;
     btnTitle: string;
+    btnLink?: string;
     dataAttribute?: string;
     className:
         | 'error_style'

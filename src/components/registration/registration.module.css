@@ -20,6 +20,9 @@ div.registration_email {
 #email_id.email_error input {
     border-left-color: #d9d9d9;
 }
+.no_error {
+    border-color: #d9d9d9;
+}
 
 @media (max-width: 576px) {
     div.registration_email {

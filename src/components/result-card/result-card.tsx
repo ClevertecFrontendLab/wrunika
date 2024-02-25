@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { EnterBg } from '@components/enter-bg';
 import { Button, Result } from 'antd';
 import { ResultCardPropsType } from './../../types';
@@ -8,6 +9,8 @@ export const ResultCard = ({
     status,
     subTitle,
     btnTitle,
+    btnLink = '',
+    onBtnClick,
     dataAttribute,
     title,
     className,
@@ -20,8 +23,13 @@ export const ResultCard = ({
                 title={title}
                 subTitle={subTitle}
                 extra={
-                    <Button data-test-id={dataAttribute} type='primary' key='console'>
-                        {btnTitle}
+                    <Button
+                        onClick={onBtnClick}
+                        data-test-id={dataAttribute}
+                        type='primary'
+                        key='console'
+                    >
+                        <Link to={btnLink}>{btnTitle}</Link>
                     </Button>
                 }
             />
