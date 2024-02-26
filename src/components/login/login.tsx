@@ -1,19 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import { EnterButtons } from '@components/enter-buttons';
 import { EmailInput } from '@components/email-input';
 import { LoginValuesType } from './../../types';
-import { useLoginMutation } from '@redux/auth-api.ts';
+import { useCheckEmailMutation, useLoginMutation } from '@redux/auth-api.ts';
 import { Loader } from '@components/loader';
 import { PATHS } from '@constants/paths.ts';
+import { history, useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
+import { setEmailForForgot } from '@redux/auth.slice.ts';
 
 import './login.css';
 import s from './login.module.css';
 
 export const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const [sendLoginData, { isLoading }] = useLoginMutation();
+    const [sendCheckEmailRequest, { isLoading: isCheckEmailLoading }] = useCheckEmailMutation();
+    const prevPath = useAppSelector((state) => state.router.previousLocations);
+    const emailForForgot = useAppSelector((state) => state.auth.emailForForgot);
     const [form] = Form.useForm();
     const [isEmailTouched, setIsEmailTouched] = useState(false);
     const [disabledForgot, setDisabledForgot] = useState(false);
@@ -21,15 +27,38 @@ export const Login = () => {
     const [isEmailHasError, setIsEmailHasError] = useState(false);
     const error_style = isEmailHasError ? 'email_error' : 'no_error';
 
+    const getEmail = (value: string) => {
+        dispatch(setEmailForForgot({ email: value }));
+    };
     const handleFormChange = () => {
         const hasEmailError = form.getFieldsError(['email']).some(({ errors }) => errors.length);
         setIsEmailTouched(form.isFieldsTouched(['email'], true));
         setDisabledForgot(!(!hasEmailError && isEmailTouched));
         setIsEmailHasError(hasEmailError);
     };
+    const sendRequestIfForgot = (value: string) => {
+        sendCheckEmailRequest({ email: value })
+            .unwrap()
+            .then(() => {
+                setEmailForForgot({ email: value });
+                navigate(PATHS.CONFIRM_EMAIL);
+            })
+            .catch((e) => {
+                if (e.status === 404 && e.data.message === 'Email не найден') {
+                    navigate(PATHS.EMAIL_NO_EXIST);
+                } else {
+                    dispatch(setEmailForForgot({ email: value }));
+                    //navigate(PATHS.ERROR_CHECK_EMAIL);
+                    history.push(PATHS.ERROR_CHECK_EMAIL);
+                }
+            });
+    };
 
     const onClickForgotBtn = () => {
         if (!isEmailTouched || isEmailHasError) setDisabledForgot(true);
+        if (isEmailTouched && !isEmailHasError) {
+            sendRequestIfForgot(emailForForgot.email);
+        }
     };
     const onFinish = (values: LoginValuesType) => {
         sendLoginData({ email: values.email, password: values.password })
@@ -46,12 +75,23 @@ export const Login = () => {
                 navigate(PATHS.ERROR_LOGIN);
             });
     };
+
+    useEffect(() => {
+        if (
+            emailForForgot.email &&
+            prevPath &&
+            prevPath[prevPath.length - 1].location?.pathname === PATHS.ERROR_CHECK_EMAIL
+        ) {
+            sendRequestIfForgot(emailForForgot.email);
+        }
+    }, [emailForForgot.email, prevPath]);
+
     if (localStorage.getItem('accessToken')) {
         return <Navigate to={PATHS.MAIN} />;
     }
     return (
         <>
-            {isLoading && <Loader />}
+            {(isLoading || isCheckEmailLoading) && <Loader />}
             <Form
                 name='login'
                 className={s.login_form}
@@ -62,7 +102,7 @@ export const Login = () => {
             >
                 <div className={s.inputs_wrapper}>
                     <div id={s.email_id} className={`${s[error_style]}`}>
-                        <EmailInput dataAttribute='login-email' />
+                        <EmailInput getEmailValue={getEmail} dataAttribute='login-email' />
                     </div>
                     <Form.Item
                         className={s.password}

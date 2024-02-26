@@ -57,6 +57,7 @@ export type EnterButtonsPropsType = {
 export type EmailInputPropsType = {
     className?: string;
     dataAttribute: string;
+    getEmailValue?: (value: string) => void;
 };
 
 export type EnterComponentPropsType = {
