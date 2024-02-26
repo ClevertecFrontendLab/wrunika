@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Divider, Layout, Menu, Typography } from 'antd';
 import {
     CalendarTwoTone,
@@ -11,6 +12,7 @@ import {
 import { useResize } from '@hooks/useResize.ts';
 import { exit, logoFit, logoFull } from './../../assets';
 import { NavbarMenuItemsType, NavbarPropsType } from './../../types';
+import { PATHS } from '@constants/paths.ts';
 
 import s from './navbar.module.css';
 
@@ -71,6 +73,12 @@ export const Navbar = ({ setNavbarCollapsed }: NavbarPropsType) => {
         },
     ];
 
+    const navigate = useNavigate();
+    const onLogoutClick = () => {
+        localStorage.clear();
+        navigate(PATHS.AUTH);
+    };
+
     return (
         <>
             <Layout.Sider
@@ -89,6 +97,7 @@ export const Navbar = ({ setNavbarCollapsed }: NavbarPropsType) => {
                 <div className={s.exit}>
                     <Divider style={{ margin: 0 }} />
                     <Button
+                        onClick={onLogoutClick}
                         className={s.exit_btn}
                         size='middle'
                         type='text'
