@@ -37,7 +37,7 @@ export const PasswordInputs = ({
 
             <Form.Item
                 className={`${s.password} ${s.repeat_password}`}
-                name='confirm'
+                name='confirmPassword'
                 dependencies={['password']}
                 rules={[
                     {

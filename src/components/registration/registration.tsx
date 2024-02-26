@@ -40,7 +40,7 @@ export const Registration = () => {
                 navigate(PATHS.REGISTRATION_SUCCESS);
             })
             .catch((e) => {
-                if (e.data.statusCode === 409) {
+                if (e.status === 409) {
                     navigate(PATHS.ERROR_USER_EXIST);
                 } else {
                     dispatch(

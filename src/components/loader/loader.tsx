@@ -18,7 +18,7 @@ export const Loader = () => {
     };
 
     return (
-        <div className={s.loader_wrapper}>
+        <div data-test-id='loader' className={s.loader_wrapper}>
             <div style={{ marginTop: top, marginLeft: left }}>
                 <Lottie options={defaultOptions} height={150} width={150} />
             </div>
