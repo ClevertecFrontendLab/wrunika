@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RegistrationValuesType } from './../types';
+import { ChangePasswordType, RegistrationValuesType } from './../types';
 
 const initialState = {
     registrationData: { email: '', password: '' },
-    //registrationEmail: '',
-    //registrationPassword: '',
+    emailForForgot: { email: '' },
+    changePasswordData: { confirmPassword: '', password: '' },
 };
 export const authSlice = createSlice({
     name: 'auth',
@@ -13,7 +13,13 @@ export const authSlice = createSlice({
         setRegistrationData: (state, action: PayloadAction<RegistrationValuesType>) => {
             state.registrationData = action.payload;
         },
+        setEmailForForgot: (state, action: PayloadAction<{ email: string }>) => {
+            state.emailForForgot = action.payload;
+        },
+        setChangePasswordData: (state, action: PayloadAction<ChangePasswordType>) => {
+            state.changePasswordData = action.payload;
+        },
     },
 });
 
-export const { setRegistrationData } = authSlice.actions;
+export const { setRegistrationData, setEmailForForgot, setChangePasswordData } = authSlice.actions;

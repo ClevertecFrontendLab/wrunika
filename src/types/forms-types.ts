@@ -5,3 +5,8 @@ export type LoginValuesType = {
 };
 
 export type RegistrationValuesType = Omit<LoginValuesType, 'remember'>;
+
+export type ChangePasswordType = {
+    password: string;
+    confirmPassword: string;
+};

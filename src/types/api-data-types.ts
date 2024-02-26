@@ -14,7 +14,9 @@ export type CheckEmailResponse = {
     message: string;
 };
 
-export type ConfirmEmailResponse = {
+export type ConfirmEmailResponse = CheckEmailResponse;
+
+export type ConfirmEmailArgs = {
     email: string;
     code: string;
 };

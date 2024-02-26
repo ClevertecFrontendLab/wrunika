@@ -3,6 +3,7 @@ import {
     ChangePasswordResponse,
     CheckEmailArgs,
     CheckEmailResponse,
+    ConfirmEmailArgs,
     ConfirmEmailResponse,
     EnterArgs,
     LoginResponse,
@@ -27,7 +28,7 @@ const authApi = baseApi.injectEndpoints({
                     return { url: `/auth/check-email`, method: 'POST', body: args };
                 },
             }),
-            confirmEmail: builder.mutation<ConfirmEmailResponse, CheckEmailArgs>({
+            confirmEmail: builder.mutation<ConfirmEmailResponse, ConfirmEmailArgs>({
                 query: (args) => {
                     return {
                         url: `/auth/confirm-email`,
