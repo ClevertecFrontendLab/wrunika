@@ -11,8 +11,9 @@ import { useRegistrationMutation } from '@redux/index.ts';
 import { PATHS } from '@constants/paths.ts';
 import { useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
 import { setRegistrationData } from '@redux/auth.slice.ts';
+import { ERROR_STATUS } from '@constants/error-status.ts';
 
-import s from './registration.module.css';
+import styles from './registration.module.css';
 
 export const Registration = () => {
     const [sendRegistrationData, { isLoading }] = useRegistrationMutation();
@@ -40,7 +41,7 @@ export const Registration = () => {
                 navigate(PATHS.REGISTRATION_SUCCESS);
             })
             .catch((e) => {
-                if (e.status === 409) {
+                if (e.status === ERROR_STATUS.CONFLICT) {
                     navigate(PATHS.ERROR_USER_EXIST);
                 } else {
                     dispatch(
@@ -71,14 +72,14 @@ export const Registration = () => {
             {isLoading && <Loader />}
             <Form
                 name='register'
-                className={s.registration_form}
+                className={styles.registration_form}
                 onFinish={onFinish}
                 onFieldsChange={onHandleFormChange}
                 form={form}
             >
-                <div id={s.email_id} className={`${s[error_style]}`}>
+                <div id={styles.email_id} className={`${styles[error_style]}`}>
                     <EmailInput
-                        className={s.registration_email}
+                        className={styles.registration_email}
                         dataAttribute='registration-email'
                     />
                 </div>

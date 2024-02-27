@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
 import { ChangePasswordType } from './../../types';
 import { setChangePasswordData } from '@redux/auth.slice.ts';
 
-import s from './auth-change-password.module.css';
+import styles from './auth-change-password.module.css';
 
 export const AuthChangePassword = () => {
     const { form, disabled, handleFormChange } = useButtonDisable();
@@ -51,12 +51,12 @@ export const AuthChangePassword = () => {
         <>
             {isLoading && <Loader />}
             <EnterBg>
-                <div className={s.wrapper}>
-                    <Typography.Title className={s.title}>
+                <div className={styles.wrapper}>
+                    <Typography.Title className={styles.title}>
                         Восстановление аккауанта
                     </Typography.Title>
                     <Form
-                        className={s.form}
+                        className={styles.form}
                         name='change-password'
                         onFinish={onFinish}
                         onFieldsChange={handleFormChange}

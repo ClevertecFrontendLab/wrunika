@@ -1,24 +1,30 @@
 import { Form, Input } from 'antd';
-import { PasswordInputsPropsType } from './../../types';
+import { passwordRegex } from '@utils/regex.ts';
 
-import s from './password-inputs.module.css';
+import styles from './password-inputs.module.css';
+
+type PropsType = {
+    placeholder: string;
+    passwordDataAttribute: string;
+    confirmDataAttribute: string;
+};
 
 export const PasswordInputs = ({
     placeholder,
     passwordDataAttribute,
     confirmDataAttribute,
-}: PasswordInputsPropsType) => {
+}: PropsType) => {
     return (
-        <div className={s.passwords_wrapper}>
+        <div className={styles.passwords_wrapper}>
             <Form.Item
-                className={`${s.password} ${s.new_password}`}
+                className={`${styles.password} ${styles.new_password}`}
                 name='password'
                 help={'Пароль не менее 8 символов, с заглавной буквой и цифрой'}
                 rules={[
                     {
                         required: true,
                         validator: (_, value) => {
-                            if (!value || /^(?=.*\d)(?=.*[A-Z])[a-zA-Z0-9]{8,}$/.test(value)) {
+                            if (!value || passwordRegex.test(value)) {
                                 return Promise.resolve();
                             }
                             return Promise.reject(
@@ -36,7 +42,7 @@ export const PasswordInputs = ({
             </Form.Item>
 
             <Form.Item
-                className={`${s.password} ${s.repeat_password}`}
+                className={`${styles.password} ${styles.repeat_password}`}
                 name='confirmPassword'
                 dependencies={['password']}
                 rules={[

@@ -1,7 +1,11 @@
-import { EnterBgPropsType } from './../../types';
+import { ReactNode } from 'react';
 
-import s from './enter-bg.module.css';
+import styles from './enter-bg.module.css';
 
-export const EnterBg = ({ children }: EnterBgPropsType) => {
-    return <div className={s.bg_wrapper}>{children}</div>;
+type PropsType = {
+    children: ReactNode;
 };
+
+export const EnterBg = ({ children }: PropsType) => (
+    <div className={styles.bg_wrapper}>{children}</div>
+);

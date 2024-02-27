@@ -1,40 +1,51 @@
+import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs } from 'antd';
 import { logo } from './../../assets';
 import { EnterBg } from '@components/enter-bg';
 import { Registration } from '@components/registration';
 import { Login } from '@components/login';
-import { EnterComponentPropsType } from './../../types';
 import { PATHS } from '@constants/paths.ts';
 
 import './enter-component.css';
-import s from './enter-component.module.css';
+import styles from './enter-component.module.css';
+
+type PropsType = {
+    tabForLogin?: ReactNode;
+    tabForRegistration?: ReactNode;
+    defaultActiveKey?: 'login' | 'registration';
+    marginTop?: number;
+    marginBottom?: number;
+};
 
 export const EnterComponent = ({
-    defaultActiveKey = 'item-1',
-    child1 = <Login />,
-    child2 = <Registration />,
+    defaultActiveKey = 'login',
+    tabForLogin = <Login />,
+    tabForRegistration = <Registration />,
     marginTop,
     marginBottom,
-}: EnterComponentPropsType) => {
+}: PropsType) => {
     const items = [
-        { label: 'Вход', key: 'item-1', children: child1 },
-        { label: 'Регистрация', key: 'item-2', children: child2 },
+        { label: 'Вход', key: 'login', children: tabForLogin },
+        { label: 'Регистрация', key: 'registration', children: tabForRegistration },
     ];
     const navigate = useNavigate();
     const changeTab = (key: string) => {
-        if (key === 'item-1') navigate(PATHS.AUTH);
-        if (key === 'item-2') navigate(PATHS.REGISTRATION);
+        if (key === 'login') navigate(PATHS.AUTH);
+        if (key === 'registration') navigate(PATHS.REGISTRATION);
     };
     return (
         <EnterBg>
-            <div style={{ marginTop: marginTop, marginBottom: marginBottom }} className={s.card}>
-                <div className={s.logo_wrapper}>
-                    <img className={s.logo_img} src={logo} alt='logo' />
+            <div
+                style={{ marginTop: marginTop, marginBottom: marginBottom }}
+                className={styles.card}
+            >
+                <div className={styles.logo_wrapper}>
+                    <img className={styles.logo_img} src={logo} alt='logo' />
                 </div>
                 <Tabs
                     onTabClick={changeTab}
-                    className={s.tabs}
+                    className={styles.tabs}
                     defaultActiveKey={defaultActiveKey}
                     items={items}
                 />

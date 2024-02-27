@@ -8,7 +8,7 @@ import { Navbar } from '@components/navbar';
 import { useAppSelector } from '@redux/configure-store.ts';
 import { PATHS } from '@constants/paths.ts';
 
-import s from './main-page.module.css';
+import styles from './main-page.module.css';
 
 export const MainPage: React.FC = () => {
     const prevPath = useAppSelector((state) => state.router.previousLocations);
@@ -23,7 +23,7 @@ export const MainPage: React.FC = () => {
         return <Navigate to={PATHS.AUTH} />;
     }
     return (
-        <Layout className={s.main_layout}>
+        <Layout className={styles.main_layout}>
             <Navbar setNavbarCollapsed={setNavbarCollapsed} />
             <Layout style={{ backgroundColor: 'transparent' }}>
                 <HeaderComponent navbarCollapsed={navbarCollapsed} />

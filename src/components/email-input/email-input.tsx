@@ -1,8 +1,14 @@
 import { ChangeEvent } from 'react';
 import { Form, Input } from 'antd';
-import { EmailInputPropsType } from './../../types';
+import { emailRegex } from '@utils/regex.ts';
 
-export const EmailInput = ({ className, dataAttribute, getEmailValue }: EmailInputPropsType) => {
+type PropsType = {
+    className?: string;
+    dataAttribute: string;
+    getEmailValue?: (value: string) => void;
+};
+
+export const EmailInput = ({ className, dataAttribute, getEmailValue }: PropsType) => {
     const getEmail = (e: ChangeEvent<HTMLInputElement>) => {
         getEmailValue && getEmailValue(e.currentTarget.value);
     };
@@ -10,7 +16,7 @@ export const EmailInput = ({ className, dataAttribute, getEmailValue }: EmailInp
         <Form.Item
             className={className}
             name='email'
-            rules={[{ required: true, pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, message: '' }]}
+            rules={[{ required: true, pattern: emailRegex, message: '' }]}
         >
             <Input
                 onChange={getEmail}

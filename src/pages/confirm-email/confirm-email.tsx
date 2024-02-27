@@ -8,7 +8,7 @@ import { Loader } from '@components/loader';
 import { useAppSelector } from '@redux/configure-store.ts';
 import { PATHS } from '@constants/paths.ts';
 
-import s from '@components/result-card/result-card.module.css';
+import styles from '@components/result-card/result-card.module.css';
 import './confirm-email.css';
 
 export const ConfirmEmail = () => {
@@ -47,7 +47,7 @@ export const ConfirmEmail = () => {
             {isLoading && <Loader />}
             <EnterBg>
                 <Result
-                    className={`${s.wrapper} ${s[className]}`}
+                    className={`${styles.wrapper} ${styles[className]}`}
                     status={status}
                     title={`${errorTitle}Введите код для восстановления аккауанта`}
                     subTitle={`Мы отправили вам на e-mail ${emailForForgot} шестизначный код. Введите его в поле ниже.`}

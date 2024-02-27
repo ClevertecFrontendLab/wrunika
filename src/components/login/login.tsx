@@ -9,9 +9,11 @@ import { Loader } from '@components/loader';
 import { PATHS } from '@constants/paths.ts';
 import { history, useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
 import { setEmailForForgot } from '@redux/auth.slice.ts';
+import { ERROR_STATUS } from '@constants/error-status.ts';
+import { passwordRegex } from '@utils/regex.ts';
 
 import './login.css';
-import s from './login.module.css';
+import styles from './login.module.css';
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -44,18 +46,19 @@ export const Login = () => {
                 navigate(PATHS.CONFIRM_EMAIL);
             })
             .catch((e) => {
-                if (e.status === 404 && e.data.message === 'Email не найден') {
+                if (e.status === ERROR_STATUS.NOT_FOUND && e.data.message === 'Email не найден') {
                     navigate(PATHS.EMAIL_NO_EXIST);
                 } else {
                     dispatch(setEmailForForgot({ email: value }));
-                    //navigate(PATHS.ERROR_CHECK_EMAIL);
                     history.push(PATHS.ERROR_CHECK_EMAIL);
                 }
             });
     };
 
     const onClickForgotBtn = () => {
-        if (!isEmailTouched || isEmailHasError) setDisabledForgot(true);
+        if (!isEmailTouched || isEmailHasError) {
+            setDisabledForgot(true);
+        }
         if (isEmailTouched && !isEmailHasError) {
             sendRequestIfForgot(emailForForgot.email);
         }
@@ -94,24 +97,24 @@ export const Login = () => {
             {(isLoading || isCheckEmailLoading) && <Loader />}
             <Form
                 name='login'
-                className={s.login_form}
+                className={styles.login_form}
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFieldsChange={handleFormChange}
                 form={form}
             >
-                <div className={s.inputs_wrapper}>
-                    <div id={s.email_id} className={`${s[error_style]}`}>
+                <div className={styles.inputs_wrapper}>
+                    <div id={styles.email_id} className={`${styles[error_style]}`}>
                         <EmailInput getEmailValue={getEmail} dataAttribute='login-email' />
                     </div>
                     <Form.Item
-                        className={s.password}
+                        className={styles.password}
                         name='password'
                         rules={[
                             {
                                 required: true,
                                 validator: (_, value) => {
-                                    if (/^(?=.*\d)(?=.*[A-Z])[a-zA-Z0-9]{8,}$/.test(value)) {
+                                    if (passwordRegex.test(value)) {
                                         return Promise.resolve();
                                     }
                                     return Promise.reject(
@@ -129,7 +132,7 @@ export const Login = () => {
                     </Form.Item>
                 </div>
 
-                <Form.Item className={s.remember_forgot}>
+                <Form.Item className={styles.remember_forgot}>
                     <Form.Item name='remember' valuePropName='checked' noStyle>
                         <Checkbox data-test-id='login-remember'>
                             <Typography.Text>Запомнить меня</Typography.Text>

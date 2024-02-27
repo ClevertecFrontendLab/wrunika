@@ -1,9 +1,17 @@
 import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
-import { EnterButtonsPropsType } from './../../types';
 import { useResize } from '@hooks/useResize.ts';
+import { screenSizes } from '@constants/sizes.ts';
 
-import s from './enter-buttons.module.css';
+import styles from './enter-buttons.module.css';
+
+type PropsType = {
+    dataAttribute?: string;
+    enterButtonBody: string;
+    googleButtonBody: string;
+    className: 'login_buttons' | 'registration_buttons';
+    disabled: boolean;
+};
 
 export const EnterButtons = ({
     dataAttribute,
@@ -11,11 +19,11 @@ export const EnterButtons = ({
     googleButtonBody,
     className,
     disabled,
-}: EnterButtonsPropsType) => {
+}: PropsType) => {
     const screenWidth = useResize();
-    const btnIcon = screenWidth >= 576 ? <GooglePlusOutlined /> : null;
+    const btnIcon = screenWidth >= screenSizes.mobileWidth ? <GooglePlusOutlined /> : null;
     return (
-        <Form.Item className={`${s[className]} ${s.buttons}`}>
+        <Form.Item className={`${styles[className]} ${styles.buttons}`}>
             <Button
                 data-test-id={dataAttribute}
                 type='primary'

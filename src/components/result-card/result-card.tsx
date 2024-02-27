@@ -1,13 +1,33 @@
+import { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import { ResultStatusType } from 'antd/es/result';
 import { EnterBg } from '@components/enter-bg';
 import { Button, Result } from 'antd';
-import { ResultCardPropsType } from './../../types';
 import { useAppSelector } from '@redux/configure-store.ts';
 import { PATHS } from '@constants/paths.ts';
 import { Loader } from '@components/loader';
-import { useEffect, useState } from 'react';
 
-import s from './result-card.module.css';
+import styles from './result-card.module.css';
+
+type PropsType = {
+    status: ResultStatusType;
+    title: string;
+    subTitle: string;
+    btnTitle: string;
+    btnLink?: string;
+    dataAttribute?: string;
+    className:
+        | 'error_style'
+        | 'unsuccessful_style'
+        | 'successful_style'
+        | 'error_registration'
+        | 'error_email_no_exist'
+        | 'error_change_password'
+        | 'success_change_password'
+        | 'error_check_email'
+        | 'confirm_email'
+        | 'error_confirm_email';
+};
 
 export const ResultCard = ({
     status,
@@ -17,7 +37,7 @@ export const ResultCard = ({
     dataAttribute,
     title,
     className,
-}: ResultCardPropsType) => {
+}: PropsType) => {
     const prevPath = useAppSelector((state) => state.router.previousLocations);
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const [shouldRender, setShouldRender] = useState(false);
@@ -26,11 +46,7 @@ export const ResultCard = ({
         if (prevPath && prevPath.length <= 1) {
             setShouldRedirect(true);
         } else {
-            const timeoutId = setTimeout(() => {
-                setShouldRender(true);
-            }, 0);
-
-            return () => clearTimeout(timeoutId);
+            setShouldRender(true);
         }
     }, [prevPath]);
 
@@ -45,7 +61,7 @@ export const ResultCard = ({
             ) : (
                 <EnterBg>
                     <Result
-                        className={`${s.wrapper} ${s[className]}`}
+                        className={`${styles.wrapper} ${styles[className]}`}
                         status={status}
                         title={title}
                         subTitle={subTitle}
