@@ -50,7 +50,7 @@ export const ConfirmEmail = () => {
                     className={`${styles.wrapper} ${styles[className]}`}
                     status={status}
                     title={`${errorTitle}Введите код для восстановления аккауанта`}
-                    subTitle={`Мы отправили вам на e-mail ${emailForForgot} шестизначный код. Введите его в поле ниже.`}
+                    subTitle={`Мы отправили вам на e-mail ${emailForForgot.email} шестизначный код. Введите его в поле ниже.`}
                     extra={
                         <VerificationInput
                             value={verificationCode}

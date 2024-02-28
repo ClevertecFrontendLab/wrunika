@@ -53,7 +53,7 @@ export const AuthChangePassword = () => {
             <EnterBg>
                 <div className={styles.wrapper}>
                     <Typography.Title className={styles.title}>
-                        Восстановление аккауанта
+                        Восстановление аккаунта
                     </Typography.Title>
                     <Form
                         className={styles.form}
