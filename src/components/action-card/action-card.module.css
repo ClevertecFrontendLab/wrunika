@@ -22,11 +22,11 @@
 }
 
 @media (max-width: 834px) {
-    .changed_size182 {
+    .changed_width_182px {
         width: 11.375rem;
         height: 7.625rem;
     }
-    .changed_size230 {
+    .changed_width_230px {
         width: 14.375rem;
         height: 6.312rem;
     }

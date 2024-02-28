@@ -1,0 +1,7 @@
+div.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--primary-text-color);
+}
+
+div.ant-tabs-ink-bar {
+    background-color: var(--primary-text-color);
+}

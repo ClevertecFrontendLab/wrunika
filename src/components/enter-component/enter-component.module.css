@@ -1,0 +1,68 @@
+.card {
+    max-width: 33.687rem;
+    padding: 4rem 5.343rem 0;
+    margin: 1.625rem auto 1.75rem;
+    border-radius: 2px;
+    background-color: var(--light-background-color);
+}
+
+.logo_wrapper {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.logo_img {
+    width: 19.312rem;
+    height: 4.75rem;
+}
+
+.tabs > div:first-child {
+    margin-bottom: 1.5rem;
+}
+
+.tabs > div > div > div {
+    width: 100%;
+}
+
+.tabs > div > div > div > div {
+    width: 50%;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+:global {
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: var(--primary-text-color);
+    }
+}
+
+@media (max-width: 834px) {
+    .card {
+        margin: 5.375rem auto 8.625rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .tabs > div:first-child {
+        margin-bottom: 1.3rem;
+    }
+
+    .card {
+        max-width: 20.5rem;
+        margin: -1.5rem auto -1rem;
+        padding: 2rem 1rem 0;
+    }
+
+    .logo_wrapper {
+        margin-bottom: 2rem;
+    }
+
+    .logo_img {
+        width: 12.687rem;
+        height: 3.125rem;
+    }
+
+    .tabs > div > div > div > div {
+        font-size: 0.875rem;
+    }
+}
