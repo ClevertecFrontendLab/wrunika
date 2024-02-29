@@ -1,8 +1,0 @@
-section.main_layout {
-    background-image: url("./../../assets/main_page_light.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 0;
-    overflow-x: hidden;
-    margin-right: calc(-1 * (100vw - 100%));
-}
