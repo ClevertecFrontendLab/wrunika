@@ -29,3 +29,17 @@ export type ChangePasswordArgs = {
 export type ChangePasswordResponse = {
     message: string;
 };
+
+export type GetFeedbackResponse = {
+    id: string;
+    fullName: null | string;
+    imageSrc: null | string;
+    message: null | string;
+    rating: number;
+    createdAt: string;
+};
+
+export type PostReviewRequest = {
+    message: string;
+    rating: number;
+};
