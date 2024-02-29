@@ -4,12 +4,12 @@ import { Button, Form, Typography } from 'antd';
 import { EnterBg } from '@components/enter-bg';
 import { PasswordInputs } from '@components/password-inputs';
 import { useButtonDisable } from '@hooks/useButtonDisable.ts';
-import { useChangePasswordMutation } from '@redux/auth-api.ts';
+import { useChangePasswordMutation } from '@redux/api/auth-api.ts';
 import { Loader } from '@components/loader';
 import { PATHS } from '@constants/paths.ts';
 import { useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
 import { ChangePasswordType } from './../../types';
-import { setChangePasswordData } from '@redux/auth.slice.ts';
+import { setChangePasswordData } from '@redux/reducers/auth.slice.ts';
 
 import styles from './auth-change-password.module.css';
 
