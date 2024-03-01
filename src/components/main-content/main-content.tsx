@@ -2,8 +2,9 @@ import { Layout, Space, Typography } from 'antd';
 import { ActionCard } from '@components/action-card';
 import { CalendarTwoTone, HeartTwoTone, IdcardOutlined } from '@ant-design/icons';
 import { useResize } from '@hooks/useResize.ts';
-import { CardInfoType, WithCollapsedPropsType } from './../../types';
+import { CardInfoType } from './../../types';
 import { screenSizes } from '@constants/sizes.ts';
+import { useAppSelector } from '@redux/configure-store.ts';
 
 import styles from './main-content.module.css';
 
@@ -27,7 +28,8 @@ const cardInfo: CardInfoType[] = [
     },
 ];
 
-export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
+export const MainContent = () => {
+    const isNavbarCollapsed = useAppSelector((state) => state.layout.isNavbarCollapsed);
     const screenWidth = useResize();
     return (
         <Layout.Content style={{ backgroundColor: 'transparent' }}>
@@ -83,7 +85,7 @@ export const MainContent = ({ navbarCollapsed }: WithCollapsedPropsType) => {
                                     btnBody={c.btnBody}
                                     icon={c.icon}
                                     changedSize={
-                                        !navbarCollapsed
+                                        !isNavbarCollapsed
                                             ? 'changed_width_182px'
                                             : 'changed_width_230px'
                                     }

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Divider, Layout, Menu, Typography } from 'antd';
 import {
@@ -14,30 +14,35 @@ import { exit, logoFit, logoFull } from './../../assets';
 import { NavbarMenuItemsType } from './../../types';
 import { PATHS } from '@constants/paths.ts';
 import { screenSizes } from '@constants/sizes.ts';
+import { useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
+import { setIsNavbarCollapsed } from '@redux/reducers/layout-slice.ts';
 
 import styles from './navbar.module.css';
 
-type PropsType = {
-    setNavbarCollapsed: (collapsed: boolean) => void;
-};
-
-export const Navbar = ({ setNavbarCollapsed }: PropsType) => {
-    const [collapsed, setCollapsed] = useState(false);
+export const Navbar = () => {
+    const dispatch = useAppDispatch();
+    const isNavbarCollapsed = useAppSelector((state) => state.layout.isNavbarCollapsed);
     const screenWidth = useResize();
     const isMobileWidth = screenWidth <= screenSizes.mobileWidth;
     const siderWidth = isMobileWidth ? 106 : 208;
 
     useEffect(() => {
-        setNavbarCollapsed(collapsed);
-    }, [collapsed, setNavbarCollapsed]);
+        isMobileWidth && dispatch(setIsNavbarCollapsed({ isNavbarCollapsed: true }));
+    }, []);
 
     const switcherLeft =
-        isMobileWidth && !collapsed ? 106 : isMobileWidth && collapsed ? 0 : collapsed ? 64 : 208;
+        isMobileWidth && !isNavbarCollapsed
+            ? 106
+            : isMobileWidth && isNavbarCollapsed
+            ? 0
+            : isNavbarCollapsed
+            ? 64
+            : 208;
     const siderCollapsedWidth = isMobileWidth ? 0 : 64;
-    const logo = collapsed && !isMobileWidth ? logoFit : logoFull;
+    const logo = isNavbarCollapsed && !isMobileWidth ? logoFit : logoFull;
     const logoWidth = isMobileWidth ? { width: 106 } : undefined;
     const logoPadding =
-        collapsed && !isMobileWidth
+        isNavbarCollapsed && !isMobileWidth
             ? { paddingTop: 49, paddingBottom: 69 }
             : screenWidth <= screenSizes.mobileWidth
             ? { paddingTop: 8, paddingBottom: 22, paddingLeft: 0 }
@@ -45,7 +50,7 @@ export const Navbar = ({ setNavbarCollapsed }: PropsType) => {
 
     const iconStyle = isMobileWidth
         ? { marginBottom: 10, paddingLeft: 8, paddingRight: 4 }
-        : collapsed && !isMobileWidth
+        : isNavbarCollapsed && !isMobileWidth
         ? { marginBottom: 17, paddingLeft: 21 }
         : { marginBottom: 17, paddingLeft: 16 };
     const getMenuIcon = (icon: ReactNode) => {
@@ -93,7 +98,7 @@ export const Navbar = ({ setNavbarCollapsed }: PropsType) => {
                 theme='light'
                 trigger={null}
                 collapsible
-                collapsed={collapsed}
+                collapsed={isNavbarCollapsed}
                 collapsedWidth={siderCollapsedWidth}
                 width={siderWidth}
                 className={styles.sidebar}
@@ -111,7 +116,7 @@ export const Navbar = ({ setNavbarCollapsed }: PropsType) => {
                         type='text'
                         icon={isMobileWidth ? null : <img alt='exit' src={exit} />}
                     >
-                        {collapsed ? null : (
+                        {isNavbarCollapsed ? null : (
                             <Typography.Text className={styles.exit_text}>Выход</Typography.Text>
                         )}
                     </Button>
@@ -121,9 +126,10 @@ export const Navbar = ({ setNavbarCollapsed }: PropsType) => {
                 data-test-id={isMobileWidth ? 'sider-switch-mobile' : 'sider-switch'}
                 style={{ left: switcherLeft }}
             >
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                {React.createElement(isNavbarCollapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                     className: styles.trigger,
-                    onClick: () => setCollapsed(!collapsed),
+                    onClick: () =>
+                        dispatch(setIsNavbarCollapsed({ isNavbarCollapsed: !isNavbarCollapsed })),
                 })}
             </div>
         </>
