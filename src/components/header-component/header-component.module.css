@@ -7,10 +7,6 @@ header.header_background {
     gap: 0.5rem;
 }
 
-nav.breadcrumb {
-    color: var(--text-color);
-}
-
 .header_content {
     display: flex;
     justify-content: space-between;
