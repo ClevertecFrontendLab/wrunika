@@ -1,0 +1,39 @@
+.error {
+    padding: 4rem 5.353rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+div.error > div:nth-child(1) {
+    margin-bottom: 1.812rem;
+}
+
+div.error > div:nth-child(2) {
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+div.error > div:nth-child(3) {
+    line-height: 1.3;
+}
+
+div.buttons_wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+div.buttons_wrapper button {
+    height: 2.5rem;
+    width: 50%;
+}
+
+div.buttons_wrapper button:nth-child(1) {
+    background-color: var(--primary-text-color);
+}
+
+@media (max-width: 576px) {
+    div.error {
+        padding: 2rem 1rem;
+    }
+}
