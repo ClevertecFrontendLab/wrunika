@@ -1,0 +1,50 @@
+div.modal_wrapper > div > div {
+    padding: 0;
+}
+
+div.get_feedback_error {
+    padding-top: 8.625rem;
+}
+
+div.add_new_review {
+    padding-top: 18.062rem;
+}
+
+div.writing_review {
+    padding-top: 15.812rem;
+}
+
+div.success_post_review {
+    padding-top: 15.687rem;
+}
+
+div.error_post_review {
+    padding-top: 15.125rem;
+}
+
+@media (max-width: 576px) {
+    div.get_feedback_error {
+        padding-top: 0;
+        margin-top: -4.5rem;
+    }
+
+    div.add_new_review {
+        padding-top: 0;
+        margin-top: 6.062rem;
+    }
+
+    div.writing_review {
+        padding-top: 0;
+        margin-top: 1.562rem;
+    }
+
+    div.success_post_review {
+        padding-top: 0;
+        margin-top: 4.687rem;
+    }
+
+    div.error_post_review {
+        padding-top: 0;
+        margin-top: 5.062rem;
+    }
+}
