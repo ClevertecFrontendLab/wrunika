@@ -1,0 +1,27 @@
+div.success {
+    padding: 4rem 5.343rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+div.success > div:nth-child(1) {
+    margin-bottom: 1.812rem;
+}
+
+div.success > div:nth-child(2) {
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-color);
+}
+
+div.success > div:nth-child(3) button {
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--primary-text-color);
+}
+
+@media (max-width: 576px) {
+    div.success {
+        padding: 2rem 1rem;
+    }
+}
