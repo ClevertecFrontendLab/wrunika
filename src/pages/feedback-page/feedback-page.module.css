@@ -1,0 +1,57 @@
+.feedback_wrapper {
+    padding: 1.5rem 1.5rem 0;
+    text-align: center;
+}
+
+.reviews_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 8.25rem;
+    min-height: 35.75rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.all_reviews_shown {
+    height: 45.562rem;
+}
+
+.buttons_with_four_reviews {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 12.812rem;
+}
+
+.buttons_with_all_reviews {
+    margin-bottom: 3rem;
+}
+
+div.buttons_with_four_reviews button {
+    height: 2.5rem;
+}
+
+button[data-test-id='write-review'] {
+    background-color: var(--primary-text-color);
+}
+
+button[data-test-id='all-reviews-button'] {
+    font-size: 1rem;
+    color: var(--primary-text-color);
+}
+
+@media (max-width: 576px) {
+    .feedback_wrapper {
+        padding: 1.5rem 1rem 0;
+    }
+
+    .reviews_wrapper {
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .buttons_with_four_reviews {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2.625rem;
+    }
+}
