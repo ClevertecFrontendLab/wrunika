@@ -22,3 +22,9 @@ div.error button {
     height: 2.5rem;
     background-color: var(--primary-text-color);
 }
+
+@media (max-width: 576px) {
+    div.error > div:nth-child(3) {
+        padding-inline: 2rem;
+    }
+}
