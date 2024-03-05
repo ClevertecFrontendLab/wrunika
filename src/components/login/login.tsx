@@ -4,11 +4,11 @@ import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import { EnterButtons } from '@components/enter-buttons';
 import { EmailInput } from '@components/email-input';
 import { LoginValuesType } from './../../types';
-import { useCheckEmailMutation, useLoginMutation } from '@redux/auth-api.ts';
+import { useCheckEmailMutation, useLoginMutation } from '@redux/api/auth-api.ts';
 import { Loader } from '@components/loader';
 import { PATHS } from '@constants/paths.ts';
 import { history, useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
-import { setEmailForForgot } from '@redux/auth.slice.ts';
+import { setEmailForForgot } from '@redux/reducers/auth.slice.ts';
 import { ERROR_STATUS } from '@constants/error-status.ts';
 import { passwordRegex } from '@utils/regex.ts';
 
@@ -28,6 +28,10 @@ export const Login = () => {
 
     const [isEmailHasError, setIsEmailHasError] = useState(false);
     const error_style = isEmailHasError ? 'email_error' : 'no_error';
+
+    const handleGoogleLogin = () => {
+        window.location.href = 'https://marathon-api.clevertec.ru/auth/google';
+    };
 
     const getEmail = (value: string) => {
         dispatch(setEmailForForgot({ email: value }));
@@ -98,7 +102,7 @@ export const Login = () => {
             <Form
                 name='login'
                 className={styles.login_form}
-                initialValues={{ remember: true }}
+                initialValues={{ remember: false }}
                 onFinish={onFinish}
                 onFieldsChange={handleFormChange}
                 form={form}
@@ -155,6 +159,7 @@ export const Login = () => {
                     dataAttribute='login-submit-button'
                     enterButtonBody='Войти'
                     googleButtonBody='Войти через Google'
+                    loginWithGoogle={handleGoogleLogin}
                     className='login_buttons'
                     disabled={false}
                 />

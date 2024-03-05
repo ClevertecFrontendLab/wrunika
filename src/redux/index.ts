@@ -1,2 +1,2 @@
-export * from '@redux/base-api.ts';
-export * from '@redux/auth-api.ts';
+export * from './api';
+export * from './reducers';

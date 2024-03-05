@@ -1,4 +1,5 @@
 section.main_layout {
+    max-width: 1440px;
     background-image: url("./../../assets/main_page_light.png");
     background-repeat: no-repeat;
     background-size: cover;

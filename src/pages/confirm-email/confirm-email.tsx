@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Result } from 'antd';
 import VerificationInput from 'react-verification-input';
-import { useConfirmEmailMutation } from '@redux/auth-api.ts';
+import { useConfirmEmailMutation } from '@redux/api/auth-api.ts';
 import { EnterBg } from '@components/enter-bg';
 import { Loader } from '@components/loader';
 import { useAppSelector } from '@redux/configure-store.ts';

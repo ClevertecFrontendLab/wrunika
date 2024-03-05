@@ -10,7 +10,7 @@ import { RegistrationValuesType } from './../../types';
 import { useRegistrationMutation } from '@redux/index.ts';
 import { PATHS } from '@constants/paths.ts';
 import { useAppDispatch, useAppSelector } from '@redux/configure-store.ts';
-import { setRegistrationData } from '@redux/auth.slice.ts';
+import { setRegistrationData } from '@redux/reducers/auth.slice.ts';
 import { ERROR_STATUS } from '@constants/error-status.ts';
 
 import styles from './registration.module.css';

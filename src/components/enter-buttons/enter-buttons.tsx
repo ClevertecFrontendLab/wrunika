@@ -9,6 +9,7 @@ type PropsType = {
     dataAttribute?: string;
     enterButtonBody: string;
     googleButtonBody: string;
+    loginWithGoogle?: () => void;
     className: 'login_buttons' | 'registration_buttons';
     disabled: boolean;
 };
@@ -17,6 +18,7 @@ export const EnterButtons = ({
     dataAttribute,
     enterButtonBody,
     googleButtonBody,
+    loginWithGoogle,
     className,
     disabled,
 }: PropsType) => {
@@ -32,7 +34,9 @@ export const EnterButtons = ({
             >
                 {enterButtonBody}
             </Button>
-            <Button icon={btnIcon}>{googleButtonBody}</Button>
+            <Button onClick={loginWithGoogle} icon={btnIcon}>
+                {googleButtonBody}
+            </Button>
         </Form.Item>
     );
 };

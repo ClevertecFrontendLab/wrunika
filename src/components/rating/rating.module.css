@@ -1,0 +1,3 @@
+ul.rating_list > li:not(:last-child) {
+    margin-right: 0.25rem;
+}

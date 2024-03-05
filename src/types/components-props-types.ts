@@ -1,3 +1,3 @@
-export type WithCollapsedPropsType = {
-    navbarCollapsed: boolean;
+export type IsMainPagePropsType = {
+    isMainPage?: boolean;
 };

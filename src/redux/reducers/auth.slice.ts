@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ChangePasswordType, RegistrationValuesType } from './../types';
+import { ChangePasswordType, RegistrationValuesType } from './../../types';
 
 const initialState = {
     registrationData: { email: '', password: '' },

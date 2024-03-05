@@ -10,7 +10,7 @@ button.review_btn {
     margin-bottom: 3px;
 }
 
-.footer_btn_text {
+button.review_btn > a.footer_btn_text {
     font-size: 1rem;
     line-height: 1.313rem;
     color: var(--primary-text-color);
