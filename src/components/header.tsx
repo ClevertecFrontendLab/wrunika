@@ -12,7 +12,6 @@ const headerStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingBlock: '1rem',
     backgroundColor: 'lime.50',
     pos: 'fixed',
     zIndex: 'docked',
@@ -22,7 +21,7 @@ export const Header = () => (
     <Box
         as='header'
         data-test-id='header'
-        paddingInline={{ base: '1.25rem 1.25rem', lg: '1rem 3.5rem' }}
+        p={{ base: '0.5rem 1.25rem', lg: '1rem 3.5rem 1rem 1rem' }}
         sx={headerStyle}
     >
         <Flex columnGap='8rem'>

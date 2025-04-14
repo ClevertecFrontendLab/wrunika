@@ -14,6 +14,7 @@ export const JuiciestDishesForMainPage = () => (
                 data-test-id='juiciest-link'
                 display={{ base: 'none', xl: 'flex' }}
                 size='lg'
+                fontSize='md'
                 bg='lime.400'
                 as={Link}
                 to={Paths.JUICIEST}
@@ -40,6 +41,7 @@ export const JuiciestDishesForMainPage = () => (
             data-test-id='juiciest-link-mobile'
             display={{ base: 'flex', xl: 'none' }}
             size='lg'
+            fontSize='md'
             bg='lime.400'
             as={Link}
             to={Paths.JUICIEST}

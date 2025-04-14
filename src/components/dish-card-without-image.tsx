@@ -23,12 +23,20 @@ export const DishCardWithoutImage = ({
     titleLinesCount,
 }: Props) => {
     const cardBodyPadding = {
-        base: '0.5rem 0.5rem 0.25rem',
-        lg: '0.75rem',
-        '2xl': '1rem 1.5rem 1.25rem',
+        base: 3,
+        lg: 4,
+        '2xl': 6,
     };
     return (
-        <Flex direction='column' rowGap={{ base: 2, xl: 6 }} p={cardBodyPadding} align='start'>
+        /*<Flex direction='column' rowGap={{ base: 2, xl: 6 }} p={cardBodyPadding} align='start'>*/
+        <Flex
+            direction='column'
+            rowGap={6}
+            h='full'
+            justify='space-between'
+            p={cardBodyPadding}
+            align='start'
+        >
             <CardDishInfo hide={hide} title={title} info={info} titleLinesCount={titleLinesCount} />
             <BadgeNotification item={item} badgeBgColor={badgeBgColor} moveBadge={moveBadge} />
         </Flex>

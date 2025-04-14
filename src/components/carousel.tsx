@@ -7,8 +7,15 @@ import { DishCardWithoutImage } from '~/components';
 import { newRecipesItems } from '~/mochs/data';
 
 export const Carousel = () => {
-    const containerWidth = { base: 'calc(100vw - 60px)', lg: 'calc(100vw - 560px)' };
-    const cardWidth = { base: '158px', lg: '279px', '2xl': '322px' };
+    //const containerWidth = { base: 'calc(100vw - 60px)', lg: 'calc(100vw - 560px)' };
+    //const containerWidth = { base: 'calc(100vw - 32px)', sm: 'calc(100vw - 40px)', lg: 'calc(100vw - 560px)' };
+    const containerWidth = {
+        base: 'calc(100vw - 42px)',
+        sm: 'calc(100vw - 50px)',
+        lg: 'calc(100vw - 560px)',
+    };
+    //const cardWidth = { base: '158px', lg: '279px', '2xl': '322px' };
+    const cardWidth = { base: '153px', lg: '279px', '2xl': '322px' };
     const boxGap = { base: '0.75rem', '2xl': '1.5rem' };
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,7 +33,13 @@ export const Carousel = () => {
 
     return (
         <Flex direction='column' align='center' pos='relative'>
-            <Flex width={containerWidth} maxW={1360} overflow='hidden'>
+            <Flex
+                width={containerWidth}
+                maxW={1360}
+                overflow='hidden'
+                mr={{ base: -2.5, lg: 0 }}
+                ml={{ base: -2, lg: 0 }}
+            >
                 <MotionBox
                     transform={`translateX(-${currentIndex * 322}px)`}
                     gap={boxGap}

@@ -42,7 +42,7 @@ export const DishCard = ({ image, info, item, title, recommendation }: Props) =>
                 <Button
                     size={{ base: 'xs', xl: 'sm' }}
                     w={{ base: 6, xl: 'auto' }}
-                    leftIcon={<Image boxSize={3.5} marginLeft={1.5} src={saved} />}
+                    leftIcon={<Image boxSize={3.5} marginLeft={2} src={saved} />}
                     variant='outline'
                     colorScheme='blackAlpha.800'
                 >

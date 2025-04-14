@@ -38,7 +38,7 @@ export const SecondsVeganContent = () => (
                             fontSize={{ base: 'sm', xl: 'md' }}
                             fontWeight='medium'
                             color='lime.800'
-                            _selected={{ color: 'lime.600' }}
+                            _selected={{ color: 'lime.600', borderColor: 'lime.600' }}
                         >
                             {item}
                         </Tab>

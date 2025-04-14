@@ -9,6 +9,7 @@ type Props = {
 export const CookButton = ({ icon, title }: Props) => (
     <HStack
         border='1px solid rgba(0, 0, 0, 0.08)'
+        borderRadius='lg'
         p={{ base: '0.625rem 0.75rem', '2xl': '0.75rem 1rem' }}
         w='full'
         justify='space-between'
@@ -38,6 +39,8 @@ export const CookButton = ({ icon, title }: Props) => (
             colorScheme='lime'
             px='1rem'
             fontSize={{ base: 'xs', '2xl': 'sm' }}
+            minW='70px'
+            w={{ base: '70px', '2xl': '87px' }}
         >
             Готовить
         </Button>

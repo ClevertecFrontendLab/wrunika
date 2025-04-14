@@ -1,26 +1,54 @@
-import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
+import { AccordionButton, AccordionIcon, AccordionItem, HStack } from '@chakra-ui/icons';
 import {
+    Accordion,
+    AccordionPanel,
     Box,
     Button,
     chakra,
     Flex,
     Image,
-    Menu,
-    MenuButton,
-    MenuItem,
     Text,
 } from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 import { leftIcon } from '~/assets';
 import { Paths } from '~/constants';
 import { navMenuItems } from '~/mochs/data';
 
+const linksForNavMenu: Record<string, number> = {
+    salads: 0,
+    appetisers: 1,
+    firsts: 2,
+    seconds: 3,
+    deserts: 4,
+    grilled: 5,
+    vegan_cuisine: 6,
+    kids_dishes: 7,
+    healthy_food: 8,
+    national_food: 9,
+    sauces: 10,
+    drinks: 11,
+    preparations: 12,
+};
+
 export const NavMenu = () => {
+    const location = useLocation();
+    const pathNames = location.pathname.split('/').filter((path) => path);
+    const defaultIndex: number | undefined = linksForNavMenu[pathNames[0]];
+    const [groupIndex, setGroupIndex] = useState<number | number[]>(
+        defaultIndex === undefined ? -1 : defaultIndex,
+    );
     const navigate = useNavigate();
     const goToVeganSeconds = (id: number) => {
         id === 7 && navigate(`${Paths.VEGAN_CUISINE}/${Paths.SECONDS}`);
     };
+    const handleChange = (index: number | number[]) => {
+        setGroupIndex(index);
+    };
+    useEffect(() => {
+        setGroupIndex(defaultIndex === undefined ? -1 : defaultIndex);
+    }, [defaultIndex]);
 
     return (
         <Flex
@@ -30,9 +58,11 @@ export const NavMenu = () => {
             align='center'
             h='calc(100vh - 80px)'
             pos='fixed'
+            w={64}
         >
-            <Flex
-                direction='column'
+            <Accordion
+                index={Array.isArray(groupIndex) ? groupIndex : [groupIndex]}
+                onChange={handleChange}
                 w='full'
                 h='calc(100vh - 144px)'
                 marginTop={6}
@@ -51,55 +81,49 @@ export const NavMenu = () => {
                     },
                 }}
             >
-                {navMenuItems.map((item, index) => (
-                    <Menu gutter={0} autoSelect={false} key={index} matchWidth={true} flip={false}>
-                        {({ isOpen }) => (
-                            <>
-                                <MenuButton
-                                    data-test-id={item.id === 7 ? 'vegan-cuisine' : ''}
+                {navMenuItems.map((item) => (
+                    <AccordionItem key={item.id} border='none'>
+                        <AccordionButton
+                            data-test-id={item.id === 7 ? 'vegan-cuisine' : ''}
+                            _hover={{ bg: 'lime.50' }}
+                            _expanded={{ bg: 'lime.100' }}
+                            fontWeight='medium'
+                            h={12}
+                            onClick={() => goToVeganSeconds(item.id)}
+                        >
+                            <Box as='span' flex='1' textAlign='left'>
+                                <Flex columnGap={3} align='center'>
+                                    <Image src={item.icon} alt='Placeholder' boxSize={6} />
+                                    <span>{item.title}</span>
+                                </Flex>
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel p={0}>
+                            {item.options.map((option, i) => (
+                                <HStack
+                                    gap='11px'
+                                    paddingLeft={10}
+                                    paddingBlock='0.5rem 0.25rem'
+                                    fontWeight={i === 2 ? 'bold' : 'medium'}
+                                    as={Link}
+                                    to={`${Paths.VEGAN_CUISINE}/${Paths.SECONDS}`}
                                     _hover={{ bg: 'lime.50' }}
-                                    _expanded={{ bg: 'lime.100' }}
-                                    bg='transparent'
-                                    //isActive={isOpen}
-                                    as={Button}
-                                    onClick={() => goToVeganSeconds(item.id)}
-                                    rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                                    minH='3rem'
+                                    key={i + 'o'}
+                                    onClick={() => console.log(option)}
                                 >
-                                    <Flex columnGap={3} align='center'>
-                                        <Image src={item.icon} alt='Placeholder' boxSize={6} />
-                                        <span>{item.title}</span>
-                                    </Flex>
-                                </MenuButton>
-                                <Box padding='0' border='none' display={isOpen ? 'block' : 'none'}>
-                                    {item.options.map((option, index) => (
-                                        <MenuItem
-                                            icon={
-                                                <chakra.div
-                                                    width={index === 2 ? '5px' : '1px'}
-                                                    height={6}
-                                                    bg='lime.300'
-                                                />
-                                            }
-                                            iconSpacing='11px'
-                                            paddingLeft={10}
-                                            paddingBlock='0.5rem 0.25rem'
-                                            fontWeight={index === 2 ? 'bold' : 'medium'}
-                                            as={Link}
-                                            to={`${Paths.VEGAN_CUISINE}/${Paths.SECONDS}`}
-                                            _hover={{ bg: 'lime.50' }}
-                                            key={index}
-                                            onClick={() => console.log(option)}
-                                        >
-                                            <span>{option}</span>
-                                        </MenuItem>
-                                    ))}
-                                </Box>
-                            </>
-                        )}
-                    </Menu>
+                                    <chakra.div
+                                        width={i === 2 ? '5px' : '1px'}
+                                        height={6}
+                                        bg='lime.300'
+                                    />
+                                    <span>{option}</span>
+                                </HStack>
+                            ))}
+                        </AccordionPanel>
+                    </AccordionItem>
                 ))}
-            </Flex>
+            </Accordion>
 
             <Flex
                 as='footer'

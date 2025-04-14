@@ -15,7 +15,7 @@ export const SearchingList = ({ title, subtitle }: Props) => {
     return (
         <Flex
             direction='column'
-            rowGap='2rem'
+            rowGap={{ base: 4, xl: 8 }}
             maxW='43.5rem'
             w='full'
             align='center'
@@ -31,7 +31,9 @@ export const SearchingList = ({ title, subtitle }: Props) => {
                         px={{ base: 0, xl: '11px' }}
                         variant='outline'
                         aria-label=''
-                        icon={<Image src={searchingIconButton} />}
+                        icon={
+                            <Image src={searchingIconButton} boxSize={{ base: 3.5, xl: 'auto' }} />
+                        }
                     />
                     <InputGroup w={{ base: '100%', sm: '25.25rem', lg: '28.62rem' }} size='lg'>
                         <Input
@@ -39,6 +41,7 @@ export const SearchingList = ({ title, subtitle }: Props) => {
                             _placeholder={{ color: 'lime.800' }}
                             placeholder='Название или ингредиент...'
                             color='lime.800'
+                            borderRadius={{ base: 'base', xl: 'md' }}
                         />
                         <InputRightElement boxSize={size}>
                             <SearchIcon boxSize={{ base: '0.875rem', xl: '1rem' }} />
