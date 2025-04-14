@@ -1,33 +1,42 @@
-import './App.css';
+import { ChakraProvider, Container, Show } from '@chakra-ui/react';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router';
 
-import { useState } from 'react';
-
-import reactLogo from '~/assets/react.svg';
+import { theme } from '~/app/theme';
+import { Footer, Header, Layout } from '~/components';
+import { Paths } from '~/constants';
+import { JuiciestPage, MainPage, SecondsVeganCuisinePage } from '~/pages';
 import { useGetPostsQuery } from '~/query/services/posts.ts';
 
 function App() {
-    const [count, setCount] = useState(0);
     const { data: _data, isLoading: _isLoading } = useGetPostsQuery();
 
     return (
-        <>
-            <div>
-                <a href='https://vite.dev' target='_blank'>
-                    <img src='/vite.svg' className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
+        <BrowserRouter>
+            <ChakraProvider resetCSS theme={theme}>
+                <Container maxW='1920px' p='0' centerContent pos='relative'>
+                    <Header />
+                    <Layout>
+                        <Routes>
+                            <Route path={Paths.MAIN} element={<MainPage />} />
+                            <Route path={Paths.JUICIEST} element={<JuiciestPage />} />
+                            <Route
+                                path={Paths.VEGAN_CUISINE}
+                                element={
+                                    <>
+                                        <Outlet />
+                                    </>
+                                }
+                            >
+                                <Route path={Paths.SECONDS} element={<SecondsVeganCuisinePage />} />
+                            </Route>
+                        </Routes>
+                    </Layout>
+                    <Show below='lg'>
+                        <Footer />
+                    </Show>
+                </Container>
+            </ChakraProvider>
+        </BrowserRouter>
     );
 }
 
