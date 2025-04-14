@@ -1,0 +1,14 @@
+export { default as avatar } from './avatar.jpg';
+export { default as avatar1 } from './avatar_1.jpg';
+export { default as avatar2 } from './avatar_2.jpg';
+export { default as homeIcon } from './home_icon.svg';
+export { default as leftIcon } from './left-icon.svg';
+export { default as logo } from './logo.svg';
+export { default as logoText } from './logo_text.svg';
+export * from './nav-menu';
+export * from './new_recipes';
+export * from './rich-dishes';
+export { default as searchingIconButton } from './searching_group.svg';
+export * from './sidebar';
+export * from './vegan-dishes';
+export { default as writeIconButton } from './write_button.svg';
